@@ -1,41 +1,15 @@
-# 12 asyncClosure
+# 13 asyncClosure
 
 ## Resumen
 
-Este ejemplo toma como punto de partida el ejemplo _11-use-context_.
+Este ejemplo toma como punto de partida el ejemplo _12-set-state-func_.
 
-Uno de los prerequisitos fundamentales para poder aprender React es tener
-unos conocimientos sólidos de Javascript y ES6. En este caso tener muy
-claro el concepto de _closure_.
-
-Los componentes funcionale son eso, funciones:
-
-- Se invocan.
-- Se ejecutan.
-- Mueren.
-
-Si recordamos el concepto de closure, cuadno tenía una llamada asíncrona
-me permitía en la respuesta acceder a variables de la funcíon padre que la
-había invocado aunque está función estuviera ya muerta.
-
-Si aplicamos este concepto a React, nos podemos encontrar con un caso curioso:
-
-- Imagina que tenemos en un estado un valor de descuento.
-- Hacemos una llamada asíncrona al servidor para que nos de el total del pedido.
-- Mientras que la llamada está en curso el campo de descuento cambia.
-- En la respuesta del servidor multiplicamos el total del pedido por el descuento.
-
-¿ Qué valor de descuento crees que aplicará el antiguo o el nuevo? ... Bingo, el
-antiguo ¿Porqué? ... pensemnos en un closure, no dejamos de tener una función padre
-que se ha muerto, que mantiene los valores por el principio de closure y que lee
-los valores que tuviera en ese momento ¿ Qué pasa con los nuevos valores se generan
-en otra vida... es decir en otra llamada a la función donde todo vuelve a arrancar).
-
-Para poder resolver este caso arista, React nos proporciona el hook _userRef_
+En el ejemplo anterior vimos como resolver el problema de las llamadas
+asíncronas, y los _setState_ que toman valores antiguos, esto está bien
+si sólo hay una variable en juego, pero si hay más de una, podemos
+tener problemas, para poder resolver este caso arista, React nos proporciona el hook _userRef_
 
 Veamos como funciona.
-
-¿ Qué pasa si yo hago una llamada asíncrona dentro de un _useEffect_?
 
 ## Paso a Paso
 
@@ -43,27 +17,6 @@ Veamos como funciona.
 
 ```bash
 npm install
-```
-
-- Antes de arrancarnos vamos a quitar el use del contexto en el fichero _app.tsx_,
-  esto es algo que viene del ejemplo anterior (si partes de otro ejemplo puede que
-  no te haga falta).
-
-_./src/app.tsx_
-
-```diff
-import React from "react";
-- import { MyComponent, MyContextProvider } from "./demo";
-+ import { MyComponent } from "./demo";
-
-
-export const App = () => {
-  return (
--    <MyContextProvider>
-      <MyComponent />
--    </MyContextProvider>
-  );
-};
 ```
 
 - Vamos a por el ejemplo, ¿ Qué vamos a hacer?
