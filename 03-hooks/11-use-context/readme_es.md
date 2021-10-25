@@ -203,7 +203,7 @@ npm start
 
 **Ejercicio**:
 
-1. Create un componente que se llame _EditName_ que permite editar el nombre que tenemos en el contexto.
+1. Create un componente que se llame _MyEditComponent_ que permite editar el nombre que tenemos en el contexto.
 2. Ahora vamos a añadir un botón en ese componente que se llame "guardar", hasta que no pulsemos en guardar, este
    valor no se actualizara
 
