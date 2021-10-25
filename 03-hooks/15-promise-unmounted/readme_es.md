@@ -1,8 +1,8 @@
-# 13 Promise unmounted
+# 15 Promise unmounted
 
 ## Resumen
 
-Este ejemplo toma como punto de partida el ejemplo _12-use-ref_.
+Este ejemplo toma como punto de partida el ejemplo _14-use-ref-dom_.
 
 Cuando hacemos una petición a una rest api o similar (una llamada AJAX),
 React puede generar un memory leak si desmontamos del dom el componente que ha
@@ -100,7 +100,7 @@ export const MyChildComponent = () => {
 
 + React.useEffect(() => {
 +   mountedRef.current = true;
-+   return () => (mountedRef.current = false)
++   return () => {mountedRef.current = false}
 + }, [])
 
 + const setSafeUserCollection = (userCollection) => mountedRef.current && setUserCollection(userCollection);
@@ -131,7 +131,7 @@ Luego podemos resolver nuestra llamada _fetch_ de la siguiente manera:
 +
 +  React.useEffect(() => {
 +    mountedRef.current = true;
-+    return () => (mountedRef.current = false);
++    return () => {mountedRef.current = false};
 +  }, []);
 +
 +  const isMounted = () => mountedRef.current;
@@ -188,7 +188,7 @@ export const MyChildComponent = () => {
 export const MyChildComponent = () => {
   const [filter, setFilter] = React.useState("");
 -  const [userCollection, setUserCollection] = React.useState([]);
-+  const [userCollection, setUserCollection] = React.useSafeState([]);
++  const [userCollection, setUserCollection] = useSafeState([]);
 
 -  const { isMounted } = useSafeState();
 
