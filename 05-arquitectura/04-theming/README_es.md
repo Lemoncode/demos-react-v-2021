@@ -24,11 +24,11 @@ npm install
 _./src/core/theme/theme.vm.ts_
 
 ```ts
-import { Theme as DefaultTheme } from '@material-ui/core/styles';
+import { Theme as DefaultTheme } from "@material-ui/core/styles";
 import {
   Palette as DefaultPalette,
   PaletteColor,
-} from '@material-ui/core/styles/createPalette';
+} from "@material-ui/core/styles/createPalette";
 
 interface Palette extends DefaultPalette {
   table: {
@@ -36,7 +36,7 @@ interface Palette extends DefaultPalette {
   };
 }
 
-export interface Theme extends Omit<DefaultTheme, 'palette'> {
+export interface Theme extends Omit<DefaultTheme, "palette"> {
   palette: Palette;
 }
 ```
@@ -52,36 +52,36 @@ npm install lodash.merge --save
 _./src/core/theme/theme.ts_
 
 ```ts
-import merge from 'lodash.merge';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { Theme } from './theme.vm';
+import merge from "lodash.merge";
+import { createTheme } from "@material-ui/core/styles";
+import { Theme } from "./theme.vm";
 
-const defaultTheme = createMuiTheme();
+const defaultTheme = createTheme();
 
 export const theme: Theme = merge(defaultTheme, {
   palette: {
     primary: {
-      light: '#4a8089',
-      main: '#1a535c',
-      dark: '#002a33',
+      light: "#4a8089",
+      main: "#1a535c",
+      dark: "#002a33",
     },
     secondary: {
-      light: '#fff584',
-      main: '#d6c254',
-      dark: '#a29223',
+      light: "#fff584",
+      main: "#d6c254",
+      dark: "#a29223",
     },
     success: {
-      main: '#43a047',
+      main: "#43a047",
     },
     info: {
-      main: '#1976d2',
+      main: "#1976d2",
     },
     warning: {
-      main: '#ffa000',
+      main: "#ffa000",
     },
     table: {
       row: {
-        main: '#ddd',
+        main: "#ddd",
       },
     },
   },
@@ -93,13 +93,13 @@ export const theme: Theme = merge(defaultTheme, {
 _./src/core/theme/theme-provider.component.tsx_
 
 ```ts
-import * as React from 'react';
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import StylesProvider from '@material-ui/styles/StylesProvider';
-import { theme } from './theme';
+import * as React from "react";
+import ThemeProvider from "@material-ui/styles/ThemeProvider";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import StylesProvider from "@material-ui/styles/StylesProvider";
+import { theme } from "./theme";
 
-export const ThemeProviderComponent = props => {
+export const ThemeProviderComponent = (props) => {
   const { children } = props;
 
   return (
@@ -116,8 +116,8 @@ export const ThemeProviderComponent = props => {
 _./src/core/theme/index.ts_
 
 ```ts
-export * from './theme-provider.component';
-export * from './theme';
+export * from "./theme-provider.component";
+export * from "./theme";
 ```
 
 - Exponerlo en la aplicación:
