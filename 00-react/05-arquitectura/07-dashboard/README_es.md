@@ -340,7 +340,7 @@ _./pods/submodule-list.component.tsx_
 // (...)
 
 
-+ const itemStyle = css`
++ const rootStyle = css`
 +  background: red;
 + `;
 
@@ -349,7 +349,7 @@ export const SubmoduleListComponent: React.FC<Props> = props => {
   return (
     <DashboardComponent
       items={items}
-+      classes={{ item: { root: itemStyle } }}
++      classes={{ item: { root: rootStyle } }}
     />
   );
 };
