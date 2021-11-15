@@ -114,7 +114,7 @@ describe('mapper specs', () => {
 +   const members: apiModel.Member[] = undefined;
 
     // Act
-+   const result: viewModel.Member[] = mapMemberLitFromApiToVm(members);
++   const result: viewModel.Member[] = mapMemberListFromApiToVm(members);
 
     // Assert
 +   expect(result).toEqual([]);
